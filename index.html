@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas Tiziano — Desarrollo de Sistemas Web a Medida</title>
+    <meta name="description"
+        content="Sistemas Tiziano: startup tecnológica en Mar del Plata especializada en desarrollo de sistemas web a pequeña y mediana escala. Consultas gratuitas presenciales o por videollamada.">
+    <meta name="keywords"
+        content="desarrollo web, sistemas a medida, Mar del Plata, programación, startup, Node.js, TypeScript, SQL">
+    <meta name="author" content="Sistemas Tiziano">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Cursor Glow -->
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="nav-logo-text">ST</span>
+                <span class="nav-bolt-icon">⚡</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="nav-cta">Consulta Gratuita</a>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#contacto" class="nav-cta">Consulta Gratuita</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="logo-animation-container" id="logo-animation">
+                <!-- Step 1: Ti⚡iano with bolt as Z -->
+                <div class="logo-step logo-step-1" id="logo-step-1">
+                    <span class="logo-ti">Ti</span><span class="logo-bolt-z" id="bolt-z">⚡</span><span
+                        class="logo-iano">iano</span>
+                </div>
+                <!-- Step 2-5: Sistemas Tiziano with underline + bolt -->
+                <div class="logo-step logo-step-2" id="logo-step-2">
+                    <div class="logo-full-name" id="logo-full-name">
+                        <span class="logo-word">Sistemas</span>
+                        <span class="logo-word">Tiziano</span>
+                        <span class="logo-bolt-final" id="bolt-final">⚡</span>
+                    </div>
+                    <div class="logo-underline-track">
+                        <div class="logo-underline" id="logo-underline"></div>
+                    </div>
+                </div>
+            </div>
+            <p class="hero-tagline" id="hero-tagline">
+                Desarrollamos <span class="text-gradient">sistemas web</span> que impulsan tu negocio
+            </p>
+            <p class="hero-subtitle" id="hero-subtitle">
+                Soluciones tecnológicas a medida para pequeñas y medianas empresas en Mar del Plata y todo el país.
+            </p>
+            <div class="hero-ctas" id="hero-ctas">
+                <a href="#contacto" class="btn btn-primary">
+                    <span>Empezar Ahora</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator" id="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="section services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Nuestros Servicios</span>
+                <h2 class="section-title">Soluciones <span class="text-gradient">a medida</span> para tu empresa</h2>
+                <p class="section-desc">Construimos sistemas web robustos, escalables y diseñados para potenciar tu
+                    negocio.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal" data-delay="0">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <path d="M8 21h8M12 17v4" />
+                        </svg>
+                    </div>
+                    <h3>Desarrollo Web</h3>
+                    <p>Sitios rápidos, modernos y responsivos. Podés optar por una web sin dependencias ni mantenimiento
+                        de nuestra parte — y gestionarla vos mismo.</p>
+                    <div class="service-tags">
+                        <span>HTML/CSS/JS</span><span>Responsive</span><span>Autogestionable</span>
+                    </div>
+                </div>
+                <div class="service-card reveal" data-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3>Sistemas a Medida</h3>
+                    <p>Software personalizado que se adapta a los procesos y necesidades específicas de tu empresa.</p>
+                    <div class="service-tags">
+                        <span>Node.js</span><span>TypeScript</span><span>APIs</span>
+                    </div>
+                </div>
+                <div class="service-card reveal" data-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                        </svg>
+                    </div>
+                    <h3>Bases de Datos</h3>
+                    <p>Diseño, implementación y optimización de bases de datos SQL para gestionar tu información de
+                        forma segura.</p>
+                    <div class="service-tags">
+                        <span>SQL</span><span>PostgreSQL</span><span>Modelado</span>
+                    </div>
+                </div>
+                <div class="service-card reveal" data-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                        </svg>
+                    </div>
+                    <h3>Consultoría Tech</h3>
+                    <p>Asesoramiento tecnológico gratuito presencial en Mar del Plata o por videollamada a todo el país.
+                    </p>
+                    <div class="service-tags">
+                        <span>Gratuito</span><span>Presencial</span><span>Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="section about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <span class="section-label">Sobre Nosotros</span>
+                    <h2 class="section-title">Tecnología que <span class="text-gradient">transforma</span></h2>
+                    <p>Somos una startup tecnológica joven en Mar del Plata, enfocada en desarrollar sistemas web a
+                        medida para pequeñas y medianas empresas.</p>
+                    <p>Creemos que cada negocio merece herramientas digitales potentes y accesibles. Por eso, ofrecemos
+                        consultas iniciales <strong>completamente gratuitas</strong> — presenciales o por videollamada —
+                        para entender tus necesidades y proponerte la mejor solución.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-target="100">0</span><span class="stat-symbol">%</span>
+                            <span class="stat-label">Dedicación</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-target="24">0</span><span class="stat-symbol">/7</span>
+                            <span class="stat-label">Soporte</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-icon">📍</span>
+                            <span class="stat-label">Mar del Plata</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-tech reveal">
+                    <h3>Nuestro Stack Tecnológico</h3>
+                    <div class="tech-grid">
+                        <div class="tech-badge">
+                            <span class="tech-icon">⟨/⟩</span>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-badge">
+                            <span class="tech-icon">🎨</span>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="tech-badge">
+                            <span class="tech-icon">⚙️</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-badge">
+                            <span class="tech-icon">🟢</span>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-badge">
+                            <span class="tech-icon">🔷</span>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="tech-badge">
+                            <span class="tech-icon">🗄️</span>
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section contact-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Contacto</span>
+                <h2 class="section-title">¿Tenés un proyecto? <span class="text-gradient">Hablemos</span></h2>
+                <p class="section-desc">La primera consulta es gratuita. Presencial en Mar del Plata o por videollamada
+                    a cualquier parte del país.</p>
+            </div>
+            <div class="contact-grid">
+                <a href="https://wa.me/5411334752960" target="_blank" rel="noopener" class="contact-card reveal"
+                    id="contact-whatsapp" data-delay="0">
+                    <div class="contact-icon whatsapp-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>+54 11 3347-5296</p>
+                    <span class="contact-action">Enviar mensaje →</span>
+                </a>
+                <a href="mailto:adduci.tiziano@gmail.com" class="contact-card reveal" id="contact-email"
+                    data-delay="100">
+                    <div class="contact-icon email-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M22 4l-10 8L2 4" />
+                        </svg>
+                    </div>
+                    <h3>Email</h3>
+                    <p>sistemastiziano@gmail.com</p>
+                    <span class="contact-action">Enviar email →</span>
+                </a>
+                <div class="contact-card reveal" id="contact-location" data-delay="200">
+                    <div class="contact-icon location-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <h3>Presencial</h3>
+                    <p>Mar del Plata, Argentina</p>
+                    <span class="contact-action">Consulta gratuita ✓</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">Sistemas Tiziano <span class="footer-bolt">⚡</span></span>
+                    <p>Soluciones tecnológicas a medida para impulsar tu negocio.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#servicios">Servicios</a>
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Sistemas Tiziano. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
