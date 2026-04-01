@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initCountUp();
     initSmoothScroll();
+    initTimelineElectricity();
 });
 
 /* --- Floating Particles (Antigravity Effect) --- */
@@ -318,6 +319,69 @@ function initCountUp() {
     }, { threshold: 0.5 });
 
     statNumbers.forEach(el => observer.observe(el));
+}
+
+/* --- Timeline Lightning --- */
+function initTimelineElectricity() {
+    const line = document.querySelector('.timeline-line');
+    if (!line) return;
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.classList.add('timeline-lightning');
+    svg.setAttribute('aria-hidden', 'true');
+    line.appendChild(svg);
+
+    function buildZigzag(yOrigin, direction) {
+        // direction: +1 right, -1 left
+        const segments = 3 + Math.floor(Math.random() * 3);
+        const totalLen = 14 + Math.random() * 18;
+        const stepX = (totalLen / segments) * direction;
+        let x = 2, y = yOrigin;
+        let d = `M ${x} ${y}`;
+        for (let i = 0; i < segments; i++) {
+            x += stepX * (0.8 + Math.random() * 0.4);
+            y += (Math.random() - 0.5) * 7;
+            d += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+        }
+        return d;
+    }
+
+    function spawnBolt() {
+        const h = line.offsetHeight;
+        const yPos = h * (0.06 + Math.random() * 0.88);
+        const dir  = Math.random() > 0.5 ? 1 : -1;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', buildZigzag(yPos, dir));
+        path.setAttribute('stroke', 'rgba(255, 230, 90, 0.75)');
+        path.setAttribute('stroke-width', '1');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        path.style.opacity = '0';
+        svg.appendChild(path);
+
+        // Flash in → hold briefly → fade out
+        const totalMs = 320 + Math.random() * 180;
+        const peakAt  = 0.15;
+        let startTs = null;
+
+        function tick(ts) {
+            if (!startTs) startTs = ts;
+            const t = (ts - startTs) / totalMs;
+            if (t >= 1) { path.remove(); return; }
+            path.style.opacity = t < peakAt
+                ? (t / peakAt).toFixed(3)
+                : (1 - (t - peakAt) / (1 - peakAt)).toFixed(3);
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+
+        // Next bolt: very occasional — every 3 to 9 seconds
+        setTimeout(spawnBolt, 3000 + Math.random() * 6000);
+    }
+
+    setTimeout(spawnBolt, 2000 + Math.random() * 3000);
 }
 
 /* --- Smooth Scroll --- */
