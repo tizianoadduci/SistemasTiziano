@@ -112,6 +112,15 @@ backdrop-filter: blur(8px);
 - Tutear al cliente ("tu negocio", "contactanos")
 - Evitar jerga técnica excesiva en comunicaciones públicas
 
+### Reglas de Escritura
+- **No usar el guion largo (—)**, también llamado "raya" o "em dash". Es el signo que aparece al unir dos guiones (`--`) en muchos editores y es una de las marcas más típicas de los textos generados por IA. Queremos que la comunicación se sienta humana, propia y real.
+- **Qué usar en su lugar:**
+  - Coma, dos puntos o paréntesis para separar ideas dentro de una oración.
+  - Guion simple con espacios (` - `) cuando hace falta un separador, por ejemplo en títulos.
+  - Punto y seguido para cortar una idea larga en dos.
+- **Escribir como uno habla:** frases claras, directas y en primera persona. Mejor una idea por oración que una oración con muchos cortes.
+- Aplica a **todo lo escrito**: web, emails, propuestas, posts y respuestas a clientes.
+
 ### Posts para Redes
 | Tipo | Ejemplo de formato |
 |------|-------------------|
@@ -130,7 +139,7 @@ backdrop-filter: blur(8px);
   Desarrollo de Sistemas Web a Medida
   📍 Mar del Plata, Argentina
   📱 +54 11 3347-5296
-  ✉️ adduci.tiziano@gmail.com
+  ✉️ sistemastiziano@gmail.com
   ```
 
 ### Formatos Recomendados

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountUp();
     initSmoothScroll();
     initTimelineElectricity();
+    initProjectVideos();
 });
 
 /* --- Floating Particles (Antigravity Effect) --- */
@@ -261,8 +262,13 @@ function initLogoAnimation() {
         },
     ];
 
+    // Hero animation speed: the snappy sequence is the default (message appears at ~2.4s
+    // instead of ~5.3s). Add ?hero=full to the URL to preview the original, slower version.
+    const heroMode = new URLSearchParams(location.search).get('hero');
+    const speed = heroMode === 'full' ? 1 : 0.45;
+
     timeline.forEach(item => {
-        setTimeout(item.action, item.delay);
+        setTimeout(item.action, item.delay * speed);
     });
 }
 
@@ -382,6 +388,48 @@ function initTimelineElectricity() {
     }
 
     setTimeout(spawnBolt, 2000 + Math.random() * 3000);
+}
+
+/* --- Project Video Modal (click-to-play) --- */
+function initProjectVideos() {
+    const modal = document.getElementById('video-modal');
+    const player = document.getElementById('video-modal-player');
+    const titleEl = document.getElementById('video-modal-title');
+    const triggers = document.querySelectorAll('.project-media[data-video]');
+    if (!modal || !player || !triggers.length) return;
+
+    function openModal(src, title) {
+        titleEl.textContent = title || '';
+        player.src = src; // src set only on open → video loads on demand, not on page load
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Attempt autoplay once the modal is visible
+        player.play().catch(() => { /* user can press play manually */ });
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        player.pause();
+        player.removeAttribute('src');
+        player.load(); // fully release the buffered video
+    }
+
+    triggers.forEach(btn => {
+        btn.addEventListener('click', () => {
+            openModal(btn.getAttribute('data-video'), btn.getAttribute('data-title'));
+        });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach(el => {
+        el.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
 }
 
 /* --- Smooth Scroll --- */
