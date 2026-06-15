@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initWhatsAppBubble();
 });
 
-/* --- Keep the floating WhatsApp widget above the footer copyright line --- */
+/* --- Keep the floating WhatsApp widget above the footer --- */
 function initWhatsAppPosition() {
     const widget = document.querySelector('.whatsapp-widget');
-    const anchor = document.querySelector('.footer-bottom');
+    const anchor = document.querySelector('.footer');
     if (!widget || !anchor) return;
-    const GAP = 14; // space to leave above the copyright line
+    const GAP = 14; // space to leave above the footer
     let ticking = false;
 
     function update() {
