@@ -1149,11 +1149,16 @@ ul {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: var(--transition-fast);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .faq-item:hover {
     border-color: rgba(255, 215, 0, 0.15);
+}
+
+.faq-item[open] {
+    border-color: rgba(255, 215, 0, 0.28);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
 }
 
 .faq-item summary {
@@ -1168,6 +1173,12 @@ ul {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    transition: color 0.22s ease;
+    user-select: none;
+}
+
+.faq-item[open] > summary {
+    color: var(--accent-yellow);
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1179,14 +1190,27 @@ ul {
     font-size: 1.6rem;
     color: var(--accent-yellow);
     line-height: 1;
-    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-item[open] summary::after {
     transform: rotate(45deg);
 }
 
+/* Grid trick: anima altura sin JS, overridea UA display:none */
 .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item[open] .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer-inner {
+    overflow: hidden;
     padding: 0 24px 22px;
 }
 
@@ -1194,6 +1218,14 @@ ul {
     color: var(--text-secondary);
     font-size: 0.98rem;
     line-height: 1.65;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease 0.14s, transform 0.25s ease 0.14s;
+}
+
+.faq-item[open] .faq-answer p {
+    opacity: 1;
+    transform: none;
 }
 
 /* --- Floating WhatsApp Button --- */
