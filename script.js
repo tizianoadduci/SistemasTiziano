@@ -13,7 +13,54 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initTimelineElectricity();
     initProjectVideos();
+    initWhatsAppPosition();
+    initWhatsAppBubble();
 });
+
+/* --- Keep the floating WhatsApp widget above the footer copyright line --- */
+function initWhatsAppPosition() {
+    const widget = document.querySelector('.whatsapp-widget');
+    const anchor = document.querySelector('.footer-bottom');
+    if (!widget || !anchor) return;
+    const GAP = 14; // space to leave above the copyright line
+    let ticking = false;
+
+    function update() {
+        ticking = false;
+        widget.style.bottom = ''; // reset so we can read the CSS base (24px / 16px on mobile)
+        const base = parseFloat(getComputedStyle(widget).bottom) || 24;
+        const top = anchor.getBoundingClientRect().top;
+        const lift = (window.innerHeight - top) + GAP; // bottom needed to sit GAP above the line
+        if (lift > base) widget.style.bottom = lift + 'px';
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+}
+
+/* --- WhatsApp greeting bubble (shows once per session) --- */
+function initWhatsAppBubble() {
+    const bubble = document.getElementById('whatsapp-bubble');
+    const closeBtn = document.getElementById('whatsapp-bubble-close');
+    if (!bubble) return;
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem('wspBubbleClosed') === '1'; } catch (e) {}
+    if (dismissed) return;
+
+    function hide() {
+        bubble.classList.remove('show');
+        try { sessionStorage.setItem('wspBubbleClosed', '1'); } catch (e) {}
+    }
+
+    setTimeout(() => bubble.classList.add('show'), 2500);
+
+    if (closeBtn) closeBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); hide(); });
+    const link = bubble.querySelector('a');
+    if (link) link.addEventListener('click', hide);
+}
 
 /* --- Floating Particles (Antigravity Effect) --- */
 function initParticles() {
